@@ -34,11 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const participantItems = participants.length > 0
           ? participants.map((email) => `
               <li class="participant-row">
-                <span>${email}</span>
-                <button type="button" class="unregister-button" data-activity="${name}" data-email="${email}">Unregister</button>
+                <span class="participant-email">${email}</span>
+                <button type="button" class="unregister-button" data-activity="${name}" data-email="${email}" aria-label="Remove ${email}" title="Unregister ${email}">
+                  <span aria-hidden="true">🗑️</span>
+                </button>
               </li>
             `).join("")
-          : "<li>No participants yet</li>";
+          : "<li class=\"empty-participants\">No participants yet</li>";
 
         activityCard.innerHTML = `
           <h4>${name}</h4>
